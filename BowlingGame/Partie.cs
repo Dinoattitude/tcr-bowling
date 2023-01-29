@@ -9,7 +9,6 @@ namespace BowlingGame
         public void Lancer(int nombreQuillesTombées)
         {
             _historique.Add(nombreQuillesTombées);
-
             if (EstUnStrike() && !EstLaDerniereFrame() && !EstLeCoupFinal()) _historique.Add(0);
             if ((EstUnStrike() || EstUnSpare()) && (EstLaDerniereFrame() || !EstLeCoupFinal())) TroisiemeCoup = true;
             
@@ -19,13 +18,23 @@ namespace BowlingGame
                 Console.WriteLine(Score);
                 ScoreFinal += Score;
             }
-
+            
             if (TermineUneFrame() && !EstLeCoupFinal())
             {
-                Score = DeuxDerniersLancers.Sum();
-                ScoreFinal += Score;
-                nbFrame++;
+                if (EstUnSpare())
+                {
+                    Score = DeuxDerniersLancers.Sum() + nombreQuillesTombées;
+                    ScoreFinal += Score;
+                    nbFrame++;
+                }
+                else
+                {
+                    Score = DeuxDerniersLancers.Sum();
+                    ScoreFinal += Score;
+                    nbFrame++;
+                }
             }
+            
         }
 
         private IEnumerable<int> DeuxDerniersLancers => _historique.AsEnumerable().Reverse().Take(2);
