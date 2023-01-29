@@ -163,7 +163,7 @@ namespace BowlingGame.Test
             partie.Lancer(10);
 
             // ALORS le score est de 10
-            Assert.AreEqual(20, partie.Score);
+            Assert.AreEqual(10, partie.Score);
         }
 
         [TestMethod]
