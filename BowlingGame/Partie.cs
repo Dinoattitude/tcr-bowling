@@ -9,8 +9,15 @@ namespace BowlingGame
         public void Lancer(int nombreQuillesTombées)
         {
             _historique.Add(nombreQuillesTombées);
-            if (EstUnStrike() && !EstLaDerniereFrame() && !EstLeCoupFinal()) _historique.Add(0);
-            if ((EstUnStrike() || EstUnSpare()) && (EstLaDerniereFrame() || !EstLeCoupFinal())) TroisiemeCoup = true;
+            if (EstUnStrike() && !EstLaDerniereFrame() && !EstLeCoupFinal())
+            {
+                _historique.Add(0);
+            }
+
+            if ((EstUnStrike() || EstUnSpare()) && (EstLaDerniereFrame() || !EstLeCoupFinal()))
+            {
+                TroisiemeCoup = true;
+            }
             
             if(EstLeCoupFinal() && TroisiemeCoup.Equals(true))
             {

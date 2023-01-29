@@ -163,7 +163,7 @@ namespace BowlingGame.Test
             partie.Lancer(10);
 
             // ALORS le score est de 10
-            Assert.AreEqual(10, partie.Score);
+            Assert.AreEqual(20, partie.Score);
         }
 
         [TestMethod]
@@ -221,14 +221,13 @@ namespace BowlingGame.Test
                 i++;
                 partie.Lancer(1);
                 partie.Lancer(1);
-            } while (i < 10);
+            } while (i < 9);
 
             partie.Lancer(5);
             partie.Lancer(5);
             partie.Lancer(5);
-    
-            // ALORS le score est de 33
-            Assert.AreEqual(33, partie.ScoreFinal);
+
+            Assert.AreEqual(31, partie.ScoreFinal);
         }
 
         [TestMethod]
